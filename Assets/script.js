@@ -1,92 +1,9 @@
 // Assignment Code
 
-// Adding the characters for the password generator to choose from
-var numbers =
-    '1'
-    '2'
-    '3'
-    '4'
-    '5'
-    '6'
-    '7'
-    '8'
-    '9'
-    '0';
 
-var lowerCase =
-    'a'
-    'b'
-    'c'
-    'd'
-    'e'
-    'f'
-    'g'
-    'h'
-    'i'
-    'j'
-    'k'
-    'l'
-    'm'
-    'n'
-    'o'
-    'p'
-    'q'
-    'r'
-    's'
-    't'
-    'u'
-    'v'
-    'w'
-    'x'
-    'y'
-    'z';
+//var generateBtn = document.querySelector("#generate");
 
-var upperCase =
-    'A'
-    'B'
-    'C'
-    'D'
-    'E'
-    'F'
-    'G'
-    'H'
-    'I'
-    'J'
-    'K'
-    'L'
-    'M'
-    'N'
-    'O'
-    'P'
-    'Q'
-    'R'
-    'S'
-    'T'
-    'U'
-    'V'
-    'W'
-    'X'
-    'Y'
-    'Z';
-
-var  specialChar =
-    '!'
-    '@'
-    '#'
-    '$'
-    '%'
-    '^'
-    '&'
-    '*'
-    '('
-    ')'
-    '-'
-    '+'
-    '=';
-
-var generateBtn = document.querySelector("#generate");
-
-const resultEl = document.getElementById('result');
+const passwordEl = document.getElementById('password');
 const lengthEl = document.getElementById('length');
 const lowercaseEl = document.getElementById('lowercase');
 const uppercaseEl = document.getElementById('uppercase');
@@ -100,6 +17,54 @@ const randomFunc = {
     upper: getRandomUpper,
     number: getRandomNumber,
     symbols: getRandomSymbol
+};
+
+// Generate eventListener
+generateEl.addEventListener('click', () => {
+    const length = +lengthEl.value;
+    const hasLower = lowercaseEl.checked;
+    const hasUpper = uppercaseEl.checked;
+    const hasNumbers = numbersEl.checked;
+    const hasSymbols = symbolsEl.checked;
+
+    passwordEl.innerText = generatePassword(
+        hasLower,
+        hasUpper,
+        hasNumbers,
+        hasSymbols,
+        length,
+    );
+});
+
+// Generate Password Function
+function generatePassword(lower, upper, number, symbols, length) {
+
+    let generatedPassword = '';
+
+    const typesCount = lower + upper + number + symbols;
+
+// .filter allows for the object to be removed if it is unchecked
+    const typesArr = [{lower}, {upper}, {number}, {symbols}].filter
+    (
+        item => Object.values(item) [0]
+    );
+
+// ensures that if no boxes are checked then no results will come back    
+    if(typesCount === 0) {
+        return '';
+    }
+
+    for(let i = 0; i < length; i += typesCount) {
+        typesArr.forEach(type => {
+            const funcName = Object.keys(type)[0];
+
+            generatedPassword += randomFunc[funcName]();
+        });
+    }
+
+    const finalPassword = generatedPassword.slice(0, length);
+
+    return finalPassword;
 }
 
 
@@ -123,13 +88,13 @@ function getRandomSymbol() {
 }
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+//function writePassword() {
+//  var password = generatePassword();
+//  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+//  passwordText.value = password;
 
-}
+//}
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//generateBtn.addEventListener("click", writePassword);
