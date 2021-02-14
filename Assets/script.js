@@ -5,8 +5,8 @@
 
 const passwordEl = document.getElementById('password');
 const lengthEl = document.getElementById('length');
-const lowercaseEl = document.getElementById('lowercase');
-const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lower');
+const uppercaseEl = document.getElementById('upper');
 const numbersEl = document.getElementById('numbers');
 const symbolsEl = document.getElementById('symbols');
 const generateEl = document.getElementById('generate');
@@ -54,6 +54,7 @@ function generatePassword(lower, upper, number, symbols, length) {
         return '';
     }
 
+// Creates a loop
     for(let i = 0; i < length; i += typesCount) {
         typesArr.forEach(type => {
             const funcName = Object.keys(type)[0];
