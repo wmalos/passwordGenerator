@@ -86,6 +86,23 @@ var  specialChar =
 
 var generateBtn = document.querySelector("#generate");
 
+const resultEl = document.getElementById('result');
+const lengthEl = document.getElementById('length');
+const lowercaseEl = document.getElementById('lowercase');
+const uppercaseEl = document.getElementById('uppercase');
+const numbersEl = document.getElementById('numbers');
+const symbolsEl = document.getElementById('symbols');
+const generateEl = document.getElementById('generate');
+
+
+const randomFunc = {
+    lower: getRandomLower,
+    upper: getRandomUpper,
+    number: getRandomNumber,
+    symbols: getRandomSymbol
+}
+
+
 // Generator functions
 
 function getRandomLower() {
