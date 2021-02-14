@@ -12,4 +12,4 @@ Add event listener so that the browser responds on the click of the generate but
 Ensure that the generator is responding to the boxes being checked and unchecked
 
 
-Link: 
+Link: https://wmalos.github.io/passwordGenerator/
