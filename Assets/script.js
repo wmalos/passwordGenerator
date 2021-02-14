@@ -1,8 +1,5 @@
 // Assignment Code
 
-
-//var generateBtn = document.querySelector("#generate");
-
 const passwordEl = document.getElementById('password');
 const lengthEl = document.getElementById('length');
 const lowercaseEl = document.getElementById('lower');
@@ -11,7 +8,7 @@ const numbersEl = document.getElementById('numbers');
 const symbolsEl = document.getElementById('symbols');
 const generateEl = document.getElementById('generate');
 
-
+// Pulls characters from the random functions
 const randomFunc = {
     lower: getRandomLower,
     upper: getRandomUpper,
@@ -71,6 +68,7 @@ function generatePassword(lower, upper, number, symbols, length) {
 
 // Generator functions
 
+// CharCode allows the generator to pull the characters from the browser
 function getRandomLower() {
     return String.fromCharCode(Math.floor(Math.random() * 26) + 97)
 }
@@ -87,15 +85,3 @@ function getRandomSymbol() {
     const symbols = '!@#$%%^&*()-+='
     return symbols[Math.floor(Math.random() * symbols.length)];
 }
-
-// Write password to the #password input
-//function writePassword() {
-//  var password = generatePassword();
-//  var passwordText = document.querySelector("#password");
-
-//  passwordText.value = password;
-
-//}
-
-// Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword);
